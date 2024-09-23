@@ -1,1 +1,52 @@
+<div class="container">
+  <div class="login-container">
+<form [formGroup]="loginForm"  class="login-form">
+  <div class="form-group">
+    <div class="gg-logo"><img src="https://greatergoods.com/assets/images/gg-logo-icon.png"></div>
+    <div class="login-header">Hello there! 👋</div>
+    <label for="login-id">Email ID</label>
+    <input id="login-id" formControlName="email" type="text" placeholder="Email Id" />
+    <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="error-message">
+      Please enter your login ID.
+    </div>
+  </div>
 
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input id="password" formControlName="password" type="password" placeholder="Password" />
+    <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="error-message">
+      Please enter your password.
+    </div>
+  </div>
+
+  <div class="forgot-password">
+    <a href="#">Forgot password?</a>
+  </div>
+
+  <button class="button" type="submit"(click)="onSubmit()" >Log in</button>
+</form>
+</div>
+<div class="image-container">
+  <div class="slideshow-container">
+
+    <div class="mySlides fade">
+      <div class="numbertext">1 / 3</div>
+      <img src="img_nature_wide.jpg" style="width:100%">
+      <div class="text">Caption Text</div>
+    </div>
+
+    <div class="mySlides fade">
+      <div class="numbertext">2 / 3</div>
+      <img src="img_snow_wide.jpg" style="width:100%">
+      <div class="text">Caption Two</div>
+    </div>
+
+    <div class="mySlides fade">
+      <div class="numbertext">3 / 3</div>
+      <img src="img_mountains_wide.jpg" style="width:100%">
+      <div class="text">Caption Three</div>
+    </div>
+
+    </div>
+</div>
+</div>

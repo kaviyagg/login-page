@@ -1,0 +1,95 @@
+.login-form {
+  max-width: 300px;
+  margin: 100px auto;
+  padding: 50px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background: #FCF8F4;
+}
+.gg-logo {
+text-align: center;
+padding-bottom:20px;
+}
+.login-header{
+text-align: center;
+padding-bottom:20px;
+font-size:30px;
+font-weight: 600;
+color:rgb(57, 70, 87);
+
+}
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.forgot-password {
+  text-align: right;
+  margin-bottom: 20px;
+  a {
+    color: #007bff !important;
+    font-size: 16px;
+    text-decoration: none;
+  }
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: #ccc;
+}
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.login-container, .image-container {
+  flex: 1;
+}
+.login-container {
+padding:2rem;
+}
+.image-container img {
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+}
+
+
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  height: 100vh;
+  align-items: center;
+  gap:3%;
+}

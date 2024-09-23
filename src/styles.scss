@@ -1,1 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+html, body {
+  height: 100%; /* Ensures the root elements take full viewport height */
+  margin: 0; /* Removes default margin */
+  padding: 0; /* Removes default padding */
+}
