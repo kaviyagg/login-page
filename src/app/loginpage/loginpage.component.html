@@ -1,31 +1,45 @@
 <div class="container">
   <div class="login-container">
-<form [formGroup]="loginForm"  class="login-form">
-  <div class="form-group">
-    <div class="gg-logo"><img src="https://greatergoods.com/assets/images/gg-logo-icon.png"></div>
-    <div class="login-header">Hello there! 👋</div>
-    <label for="login-id">Email ID</label>
-    <input id="login-id" formControlName="email" type="text" placeholder="Email Id" />
-    <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="error-message">
-      Please enter your login ID.
-    </div>
+    <form [formGroup]="loginForm" class="login-form" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <div class="gg-logo">
+          <img src="https://greatergoods.com/assets/images/gg-logo-icon.png" alt="Logo">
+        </div>
+        <div class="login-header">Hello there! :wave:</div>
+        <label for="login-id">Email ID</label>
+        <input id="login-id" formControlName="email" type="text" placeholder="Email Id" />
+        <!-- Enhanced validation feedback -->
+        <div *ngIf="emailControl.invalid && emailControl.touched" class="error-message">
+          <div *ngIf="emailControl.errors?.['required']">Email is required.</div>
+          <div *ngIf="emailControl.errors?.['pattern']">Please enter a valid email address.</div>
+          <div *ngIf="emailControl.errors?.['maxlength']">Email cannot exceed 100 characters.</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input id="password" formControlName="password" type="password" placeholder="Password" />
+        <!-- Enhanced validation feedback -->
+        <div *ngIf="passwordControl.invalid && passwordControl.touched" class="error-message">
+          <div *ngIf="passwordControl.errors?.['required']">Password is required.</div>
+          <div *ngIf="passwordControl.errors?.['minlength']">Password must be at least 6 characters long.</div>
+          <div *ngIf="passwordControl.errors?.['maxlength']">Password cannot exceed 50 characters.</div>
+        </div>
+      </div>
+      <div class="forgot-password">
+        <a href="#">Forgot password?</a>
+      </div>
+      <!-- Disable the login button while submitting or if the form is invalid -->
+      <button class="button" type="submit" [disabled]="isSubmitting() || !loginForm.valid">Log in</button>
+    </form>
   </div>
-
-  <div class="form-group">
-    <label for="password">Password</label>
-    <input id="password" formControlName="password" type="password" placeholder="Password" />
-    <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="error-message">
-      Please enter your password.
-    </div>
-  </div>
-
-  <div class="forgot-password">
-    <a href="#">Forgot password?</a>
-  </div>
-
-  <button class="button" type="submit"(click)="onSubmit()" >Log in</button>
-</form>
 </div>
 
 
-</div>
+
+
+
+
+
+
+
+
