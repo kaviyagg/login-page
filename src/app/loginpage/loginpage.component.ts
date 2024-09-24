@@ -24,42 +24,30 @@ export class LoginpageComponent implements OnInit {
 
     isSubmitting = signal(false);
   ngOnInit(): void {
-    this.initializeForm();
+    this.loginForm = this.initializeForm();
   }
   private initializeForm() {
-    this.loginForm = this.formBuilder.group({
-      email: [
-        '',
-        [
-          Validators.required,
-          Validators.pattern(this.emailValidator),
-          Validators.maxLength(100),
-        ],
-      ],
-      password: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(6),
-          Validators.maxLength(50),
-        ],
-      ],
+    return this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email,Validators.pattern(this.emailValidator)]],
+      password: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
   onSubmit() {
     if (this.loginForm.valid && !this.isSubmitting()) {
-      this.isSubmitting.set(true); // Start submission
+      this.isSubmitting.set(true);
+
       this.http.post("https://api.weightgurus.com/v3/account/login", this.loginForm.value)
         .pipe(
           catchError((error: HttpErrorResponse) => {
             console.error('Login failed', error);
             alert('Login failed: ' + error.message);
-            this.isSubmitting.set(false); // Stop submission on error
-            return of(null); // Return an empty observable in case of an error
+            this.isSubmitting.set(false);
+
+            return of(null);
           })
         )
         .subscribe((res: any) => {
-          this.isSubmitting.set(false); // Stop submission after response
+          this.isSubmitting.set(false);
           if (res) {
             alert('Login success');
           } else {
@@ -67,9 +55,10 @@ export class LoginpageComponent implements OnInit {
           }
         });
     } else {
-      this.loginForm.markAllAsTouched(); // Trigger validation errors
+      this.loginForm.markAllAsTouched();
     }
   }
+
   get emailControl() {
     return this.loginForm.get('email') as FormControl;
   }

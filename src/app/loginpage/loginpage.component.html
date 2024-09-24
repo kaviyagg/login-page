@@ -8,7 +8,7 @@
         <div class="login-header">Hello there! :wave:</div>
         <label for="login-id">Email ID</label>
         <input id="login-id" formControlName="email" type="text" placeholder="Email Id" />
-        <!-- Enhanced validation feedback -->
+
         <div *ngIf="emailControl.invalid && emailControl.touched" class="error-message">
           <div *ngIf="emailControl.errors?.['required']">Email is required.</div>
           <div *ngIf="emailControl.errors?.['pattern']">Please enter a valid email address.</div>
@@ -18,7 +18,7 @@
       <div class="form-group">
         <label for="password">Password</label>
         <input id="password" formControlName="password" type="password" placeholder="Password" />
-        <!-- Enhanced validation feedback -->
+
         <div *ngIf="passwordControl.invalid && passwordControl.touched" class="error-message">
           <div *ngIf="passwordControl.errors?.['required']">Password is required.</div>
           <div *ngIf="passwordControl.errors?.['minlength']">Password must be at least 6 characters long.</div>
@@ -28,8 +28,13 @@
       <div class="forgot-password">
         <a href="#">Forgot password?</a>
       </div>
-      <!-- Disable the login button while submitting or if the form is invalid -->
-      <button class="button" type="submit" [disabled]="isSubmitting() || !loginForm.valid">Log in</button>
+      <button class="button" type="submit" [disabled]="isSubmitting() || !loginForm.valid">
+        <ng-container *ngIf="!isSubmitting()">Log in</ng-container>
+        <ng-container *ngIf="isSubmitting()">
+          <div class="loader"></div>
+          Logging in...
+        </ng-container>
+      </button>
     </form>
   </div>
 </div>
