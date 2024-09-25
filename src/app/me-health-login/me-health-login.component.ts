@@ -1,14 +1,15 @@
+import { CommonModule } from '@angular/common';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, inject, signal } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ButtonModule } from 'primeng/button';
 import { PasswordModule } from 'primeng/password';
 import { catchError, of } from 'rxjs';
 @Component({
   selector: 'app-me-health-login',
   standalone: true,
-  imports: [ButtonModule,PasswordModule,ReactiveFormsModule],
+  imports: [ButtonModule,PasswordModule,ReactiveFormsModule,CommonModule ],
   templateUrl: './me-health-login.component.html',
   styleUrl: './me-health-login.component.scss'
 })
@@ -30,8 +31,7 @@ export class MeHealthLoginComponent {
   }
 
   onSubmit() {
-    if (this.loginForm.valid) {
-
+    // if (this.loginForm.valid) {
       this.http.post("https://api.weightgurus.com/v3/account/login", this.loginForm.value)
         .pipe(
           catchError((error: HttpErrorResponse) => {
@@ -47,9 +47,9 @@ export class MeHealthLoginComponent {
             alert('Invalid credentials or login failed.');
           }
         });
-    } else {
-      this.loginForm.markAllAsTouched();
-    }
+    // } else {
+    //   this.loginForm.markAllAsTouched();
+    // }
   }
 
   get emailControl() {

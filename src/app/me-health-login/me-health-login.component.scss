@@ -52,7 +52,6 @@ a {
   width: 335px !important;
   height: 48px !important;
   padding: 20px;
-  margin-bottom: 16px;
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -65,4 +64,13 @@ a {
 .submit-button {
 padding-top:2rem;
 padding-bottom:1rem;
+}
+.input-container {
+  position: relative;
+  margin-bottom: 25px;
+}
+.p-error {
+position: absolute;
+display:block;
+padding:5px;
 }
