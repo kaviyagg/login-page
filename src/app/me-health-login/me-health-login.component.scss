@@ -1,0 +1,68 @@
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+}
+.form-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 741px;
+  height: 487px;
+  background-color: rgba(255, 255, 255, 0.75);
+  padding: 3rem;
+  border-radius: 10px;
+}
+.content {
+  width: 335px;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  padding:3.5rem 0rem;
+}
+.login-page-background-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.logo {
+  width: 152px;
+  padding-bottom:2.5rem;
+}
+
+.forgot-password a {
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 12px;
+  color: #2C4052 !important;
+}
+a {
+  text-decoration: none;
+}
+
+.input-field {
+  width: 335px !important;
+  height: 48px !important;
+  padding: 20px;
+  margin-bottom: 16px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+:host ::ng-deep .p-password input {
+  width: 21rem !important;
+  height: 48px !important;
+}
+
+.submit-button {
+padding-top:2rem;
+padding-bottom:1rem;
+}

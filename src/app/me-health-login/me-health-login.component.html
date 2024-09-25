@@ -1,0 +1,27 @@
+<div class="container">
+<img class="login-page-background-image"src="assets/login-image.jpg">
+<div class="form-wrapper">
+  <div class="content">
+      <form [formGroup]="loginForm" >
+        <img src="assets/me-logo.svg" class="logo">
+        <div>
+          <input type="text" class="input-field" placeholder="Username"pInputText formControlName="email" />
+           </div>
+           <div >
+            <p-password formControlName="password"  placeholder="Password" [toggleMask]="true" />
+        </div>
+        <div class="submit-button card flex justify-content-center">
+          <button
+              pButton
+              pRipple
+              label="LOGIN"
+              (onClick)="onSubmit()">
+          </button>
+      </div>
+             <div class="forgot-password">
+               <a href="#">Forgot your password?</a>
+             </div>
+           </form>
+  </div>
+</div>
+</div>
